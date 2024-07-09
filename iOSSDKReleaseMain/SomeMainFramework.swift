@@ -15,6 +15,8 @@ public protocol SomeMainProtocol {
 }
 
 public class SomeMainFramework: SomeMainProtocol {
+    public init() {}
+    
     public func someFuncLog() {
         Logger.someLogger.log("Hello")
     }
