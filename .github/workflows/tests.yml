@@ -1,0 +1,21 @@
+name: SDK CI Tests
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!master'
+      - '!release-*'
+    paths-ignore:
+      - '**.md'
+    tags-ignore:
+      - '**'
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v4
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
