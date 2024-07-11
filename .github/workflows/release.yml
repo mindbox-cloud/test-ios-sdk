@@ -20,10 +20,10 @@ jobs:
       run: bundle install
 
     - name: Deploy to Cocoapods Secondary
-        run: |
+      run: |
           pod lib lint iOSSDKReleaseSecondary.podspec --allow-warnings
           pod trunk push iOSSDKReleaseSecondary.podspec --allow-warnings
-        env:
+      env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TOKEN }}
           
   delay:
@@ -48,8 +48,8 @@ jobs:
       run: bundle install
 
     - name: Deploy to Cocoapods Main
-        run: |
+      run: |
           pod lib lint iOSSDKReleaseMain.podspec --allow-warnings
           pod trunk push iOSSDKReleaseMain.podspec --allow-warnings
-        env:
+      env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TOKEN }}
