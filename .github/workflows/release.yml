@@ -3,7 +3,7 @@ name: SDK Publish
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     tags-ignore:
       - '**'
 jobs:
