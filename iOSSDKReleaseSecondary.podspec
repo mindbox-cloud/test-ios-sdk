@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "iOSSDKReleaseSecondary"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "Test SDK for CI/CD iOSSDKReleaseSecondary."
 
   spec.description  = "Some description. It's just test so this text must be longer than summary"             
