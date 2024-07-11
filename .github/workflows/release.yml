@@ -31,8 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - name: Delay for X minutes
-      run: sleep 120
+    - name: Delay for 20 minutes
+      run: sleep 1200
   
   publish:
     needs: [delay]
@@ -49,7 +49,8 @@ jobs:
 
     - name: Deploy to Cocoapods Main
       run: |
-          pod lib lint iOSSDKReleaseMain.podspec --allow-warnings
+          pod repo update
+          pod lib lint --allow-warnings
           pod trunk push iOSSDKReleaseMain.podspec --allow-warnings
       env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TOKEN }}
