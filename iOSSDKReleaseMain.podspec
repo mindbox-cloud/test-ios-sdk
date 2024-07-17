@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "iOSSDKReleaseMain"
-  spec.version      = "0.0.6"
+  spec.version      = "0.0.7"
   spec.summary      = "Test SDK for CI/CD iOSSDKReleaseMain."
   spec.description  = "Some description. It's just test so this text must be longer than summary"
   spec.homepage     = "https://github.com/mindbox-cloud/test-ios-sdk"
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.source_files  = "iOSSDKReleaseMain/**/*.{swift}"
   spec.exclude_files = "Classes/Exclude"
 
-  spec.dependency "iOSSDKReleaseSecondary", "0.0.6"
+  spec.dependency "iOSSDKReleaseSecondary", "0.0.7"
 
   spec.swift_version = "5"
 end
