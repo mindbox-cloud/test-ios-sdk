@@ -26,8 +26,43 @@ jobs:
       env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TOKEN }}
           
-  check-with-retry:
+#  check-with-retry:
+#    needs: [publish-secondary]
+#    runs-on: macos-latest
+#    steps:
+#    
+#    - uses: actions/checkout@v4
+#    
+#    - name: Update bundler
+#      run: gem install bundler
+#        
+#    - name: Install bundler dependencies
+#      run: bundle install
+#    
+#    - uses: nick-fields/retry@v3
+#      with:
+#        timeout_minutes: 15
+#        max_attempts: 20
+#        command: |
+#            pod repo update
+#            pod lib lint --allow-warnings
+#        on_retry_command: pod repo update
+#        retry_on: error
+#        retry_wait_seconds: 120
+    
+  delay:
     needs: [publish-secondary]
+    runs-on: ubuntu-latest
+    steps:
+    
+#    - name: Delay for 15 minutes
+#      run: sleep 900
+      
+    - name: Delay for 10 minutes
+      run: sleep 600
+      
+  check-with-retry:
+    needs: [delay]
     runs-on: macos-latest
     steps:
     
@@ -41,22 +76,14 @@ jobs:
     
     - uses: nick-fields/retry@v3
       with:
-        timeout_minutes: 15
+        timeout_minutes: 5
         max_attempts: 20
         command: |
             pod repo update
             pod lib lint --allow-warnings
         on_retry_command: pod repo update
         retry_on: error
-        retry_wait_seconds: 120
-    
-#  delay:
-#    needs: [publish-secondary]
-#    runs-on: ubuntu-latest
-#    steps:
-#    
-#    - name: Delay for 20 minutes
-#      run: sleep 1200
+        retry_wait_seconds: 60
   
   publish:
     needs: [check-with-retry]
