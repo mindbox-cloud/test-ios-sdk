@@ -42,11 +42,11 @@ jobs:
     - uses: nick-fields/retry@v3
       with:
         timeout_minutes: 5
-        max_attempts: 20
+        max_attempts: 12
         command: pod lib lint --allow-warnings
-        on_retry_command: pod repo update
+        new_command_on_retry: pod repo update
         retry_on: error
-        retry_wait_seconds: 120
+        retry_wait_seconds: 300
     
 #  delay:
 #    needs: [publish-secondary]
