@@ -28,14 +28,16 @@ jobs:
           
   check-with-retry:
     needs: [publish-secondary]
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
+    
+    - uses: actions/checkout@v4
+    
+    - name: Update bundler
+      run: gem install bundler
         
-    - name: Install Cocoapods
-      run: |
-          apt-get update
-          apt-get install -y ruby ruby-dev
-          gem install cocoapods
+    - name: Install bundler dependencies
+      run: bundle install
     
     - uses: nick-fields/retry@v3
       with:
